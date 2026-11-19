@@ -1,10 +1,23 @@
-# trading-labs
-Trading repo
+# Trading Labs
 
-Repository for experimental trading strategies, data analysis, and visualization as part of a mentorship program on trading, AI, and security concepts.
+Laboratorio para investigar mercados y construir, paso a paso, herramientas que estimen movimientos de precios con probabilidades, datos reproducibles y validación fuera de muestra.
 
-Overview
+El repo hoy contiene un prototipo inicial de análisis histórico con `yfinance.py`. Las investigaciones y decisiones de metodología se documentan antes de convertirlas en señales o código de producción.
 
-This repository serves as a practical playground for learning and testing trading strategies while integrating concepts from AI and hacking/technical analysis. It focuses on historical market data analysis, strategy backtesting, and visualization of key indicators, specifically using Simple Moving Averages (SMA).
+## Empezar aquí
 
-The main goal is to combine hands-on experimentation with structured learning to develop a deeper understanding of market behavior and algorithmic strategy implementation.
+- [Plan de la herramienta de pronóstico](docs/forecasting-roadmap.md): objetivo, horizontes, datos, validación y criterios para aceptar un modelo.
+- [Investigación de Alibaba y el ciclo de IA](research/2026-11-18-alibaba-ai-market.md): ficha con corte al 18 de noviembre de 2026, incluyendo comercio, cloud, T-Head, capacidad de centros de datos y riesgos de financiación circular.
+- [Prototipo existente](y_finance.py): descarga datos históricos y explora cruces de medias móviles.
+
+## Reglas del laboratorio
+
+1. Una salida del modelo es una probabilidad condicionada a un horizonte, no una certeza ni un precio objetivo garantizado.
+2. Cada investigación guarda su fecha de corte, fuentes y qué datos aún no estaban disponibles en esa fecha.
+3. Comparamos cualquier modelo con referencias sencillas y medimos su resultado neto de costes, con periodos de validación cronológicos.
+4. Separamos hechos publicados, inferencias y escenarios. Actualizamos las tesis cuando aparecen datos que las contradicen.
+5. No guardamos aquí datos personales de cartera, costos de entrada ni tamaños de posición. El repo es público.
+
+## Estado
+
+La primera etapa es de investigación y diseño. No hay todavía un modelo predictivo validado ni señales listas para operar.
