@@ -1,7 +1,7 @@
 # Plan para una herramienta de pronóstico de mercado
 
 **Estado:** diseño inicial  
-**Actualizado:** 2026-11-18
+**Actualizado:** 2026-11-19
 
 ## Objetivo
 
@@ -40,9 +40,11 @@ Vamos a considerar las variables que puedan aportar información para cinco sesi
 2. **Técnico y precio:** retornos rezagados, gaps, tendencia, reversión, volatilidad realizada, rango, volumen y amplitud. Los indicadores deben calcularse sólo con datos conocidos al momento de la señal.
 3. **Fundamentales:** resultados, guía, revisiones, márgenes, caja y valoración. Para cinco sesiones son especialmente útiles como catalizadores o contexto; para 12–24 meses su papel puede ser distinto.
 4. **Macro y régimen:** índices, tasas, curva, FX, commodities, volatilidad y correlaciones; en BABA, sumar proxies chinos con horario y publicación correcta.
-5. **Flujos y microestructura:** spread, profundidad, desequilibrio de órdenes, volatilidad, posiciones y opciones sólo cuando tengamos datos con hora, calidad y cobertura adecuadas. Volumen no es sinónimo de presión compradora neta.
-6. **Anomalías e integridad de mercado:** cancelaciones de órdenes, órdenes no genuinas, operaciones relacionadas y posibles patrones de spoofing/layering requieren datos de órdenes y trazas por cuenta/venue. Con precios y volumen diarios sólo podemos marcar “movimiento anómalo”, nunca concluir manipulación.
-7. **Financiamiento y conexiones entre empresas:** vencimientos, compromisos, deuda, inversión de proveedores y ventas a clientes vinculados pueden afectar riesgo sistémico; estos hechos deben verificarse compañía por compañía y no inferirse sólo de un gráfico.
+5. **Amplitud y concentración:** comparar índices ponderados por capitalización y equiponderados, avances/descensos, máximos y mínimos, contribución de los mayores componentes y concentración del crecimiento de beneficios. Una caída del Nasdaq no equivale automáticamente a una caída uniforme del mercado; tampoco una amplitud favorable previa garantiza que vaya a persistir.
+6. **Reacción a eventos y calidad del crecimiento:** medir el movimiento después de resultados frente a la sorpresa y la guía, revisiones de estimaciones, concentración de beneficios y reacción de proveedores/clientes del mismo ciclo. Un “beat” puede caer si las expectativas eran mayores; crecimiento contable no demuestra por sí solo conversión en caja.
+7. **Flujos y microestructura:** spread, profundidad, desequilibrio de órdenes, volatilidad, posiciones y opciones sólo cuando tengamos datos con hora, calidad y cobertura adecuadas. Volumen no es sinónimo de presión compradora neta.
+8. **Anomalías e integridad de mercado:** cancelaciones de órdenes, órdenes no genuinas, operaciones relacionadas y posibles patrones de spoofing/layering requieren datos de órdenes y trazas por cuenta/venue. Con precios y volumen diarios sólo podemos marcar “movimiento anómalo”, nunca concluir manipulación.
+9. **Financiamiento y conexiones entre empresas:** vencimientos, compromisos, deuda, inversión de proveedores y ventas a clientes vinculados pueden afectar riesgo sistémico; estos hechos deben verificarse compañía por compañía y no inferirse sólo de un gráfico.
 
 La regla de selección es una prueba de ablación: comparar baseline, baseline más una sola familia y combinaciones justificadas. Registrar todas las variantes. “Más variables” no significa “más información”; puede significar más ruido y más oportunidades para sobreajustar.
 
