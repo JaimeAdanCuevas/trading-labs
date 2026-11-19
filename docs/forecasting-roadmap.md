@@ -17,7 +17,8 @@ Los umbrales deben depender del activo, la volatilidad y el horizonte. La salida
 
 ## Horizontes y universo inicial
 
-- Probar primero horizontes tácticos de **1, 5 y 20 sesiones** para poder medir resultados con suficiente frecuencia.
+- Fijar **5 sesiones hábiles como horizonte principal** del primer predictor.
+- Evaluar **1 y 20 sesiones como horizontes secundarios** para comparar ruido, estabilidad y utilidad; no sustituir el objetivo principal después de ver resultados.
 - Mantener aparte un análisis fundamental de **12 a 24 meses**; no mezclarlo con el pronóstico táctico. La tesis de inversión de BABA a dos años sirve como caso de estudio, no como validación del modelo.
 - Comenzar con BABA, SPY y QQQ; añadir FXI, KWEB y 9988.HK sólo cuando se resuelvan horarios, tipo de cambio, dividendos, ADR y equivalencia entre listados.
 
