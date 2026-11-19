@@ -32,6 +32,20 @@ Los umbrales deben depender del activo, la volatilidad y el horizonte. La salida
 
 La primera etapa debe preferir datos pequeños y auditables. Evitamos incorporar de entrada cientos de variables que faciliten sobreajuste.
 
+## Familias de variables: sumar evidencia, no acumular indicadores
+
+Vamos a considerar las variables que puedan aportar información para cinco sesiones, pero añadiremos cada familia por separado y la conservaremos sólo si mejora el resultado fuera de muestra:
+
+1. **Noticias y eventos:** hora real de primera publicación, tipo de noticia, novedad, sorpresa contra el consenso disponible y reacción inicial. La polaridad del texto por sí sola no basta; una noticia “buena” puede ser peor de lo esperado o ya estar descontada.
+2. **Técnico y precio:** retornos rezagados, gaps, tendencia, reversión, volatilidad realizada, rango, volumen y amplitud. Los indicadores deben calcularse sólo con datos conocidos al momento de la señal.
+3. **Fundamentales:** resultados, guía, revisiones, márgenes, caja y valoración. Para cinco sesiones son especialmente útiles como catalizadores o contexto; para 12–24 meses su papel puede ser distinto.
+4. **Macro y régimen:** índices, tasas, curva, FX, commodities, volatilidad y correlaciones; en BABA, sumar proxies chinos con horario y publicación correcta.
+5. **Flujos y microestructura:** spread, profundidad, desequilibrio de órdenes, volatilidad, posiciones y opciones sólo cuando tengamos datos con hora, calidad y cobertura adecuadas. Volumen no es sinónimo de presión compradora neta.
+6. **Anomalías e integridad de mercado:** cancelaciones de órdenes, órdenes no genuinas, operaciones relacionadas y posibles patrones de spoofing/layering requieren datos de órdenes y trazas por cuenta/venue. Con precios y volumen diarios sólo podemos marcar “movimiento anómalo”, nunca concluir manipulación.
+7. **Financiamiento y conexiones entre empresas:** vencimientos, compromisos, deuda, inversión de proveedores y ventas a clientes vinculados pueden afectar riesgo sistémico; estos hechos deben verificarse compañía por compañía y no inferirse sólo de un gráfico.
+
+La regla de selección es una prueba de ablación: comparar baseline, baseline más una sola familia y combinaciones justificadas. Registrar todas las variantes. “Más variables” no significa “más información”; puede significar más ruido y más oportunidades para sobreajustar.
+
 ## Validación que puede descubrir fallas
 
 - Dividir por tiempo: entrenar en el pasado y evaluar en periodos posteriores mediante ventanas walk-forward. No barajar días al azar.

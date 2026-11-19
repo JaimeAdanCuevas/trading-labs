@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Simulador educativo de escenarios de mercado a cinco sesiones con noticias, fundamentales, tendencia, liquidez y ventas forzadas.">
+  <title>Laboratorio de mercado · cinco sesiones</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --page: #f7f8fa;
+      --surface: #ffffff;
+      --ink: #18212f;
+      --subtle: #5c6675;
+      --line: #d9dee7;
+      --blue: #3767d5;
+      --blue-soft: #dce7ff;
+      --orange: #be5b18;
+      --orange-soft: #fae1d0;
+      --green: #147c63;
+      --red: #be3e48;
+      --focus: #1e54c6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #11151c;
+        --surface: #1a202a;
+        --ink: #eef2f7;
+        --subtle: #b3bdcb;
+        --line: #394252;
+        --blue: #89a9ff;
+        --blue-soft: #263652;
+        --orange: #ffad79;
+        --orange-soft: #442a20;
+        --green: #64d1ad;
+        --red: #ff8890;
+        --focus: #a9c0ff;
+      }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 1080px; margin: 0 auto; padding: 28px 24px 48px; }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -0.035em; line-height: 1.12; }
+    h2 { font-size: 1.05rem; font-weight: 650; }
+    .intro { max-width: 760px; display: grid; gap: 10px; margin-bottom: 25px; }
+    .intro p, .muted { color: var(--subtle); }
+    .eyebrow { font-size: 0.76rem; letter-spacing: .11em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+    .disclaimer { font-size: .88rem; border-left: 3px solid var(--orange); padding: 8px 12px; background: var(--orange-soft); color: var(--ink); border-radius: 0 6px 6px 0; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+    section { min-width: 0; }
+    .controls { display: grid; gap: 15px; }
+    .section-heading { margin-bottom: 13px; }
+    .control { display: grid; gap: 5px; }
+    .control-top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+    label, .control-name { font-weight: 600; }
+    output { color: var(--blue); font-variant-numeric: tabular-nums; font-weight: 650; white-space: nowrap; }
+    input[type="range"] { width: 100%; accent-color: var(--blue); margin: 4px 0 0; }
+    input[type="number"], select, button { font: inherit; color: var(--ink); }
+    input[type="number"], select { width: 100%; min-height: 40px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); padding: 7px 10px; }
+    input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .hint { color: var(--subtle); font-size: .78rem; }
+    .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+    .run-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 5px; }
+    button { border: 0; border-radius: 7px; padding: 10px 16px; background: var(--blue); color: #fff; font-weight: 650; cursor: pointer; min-height: 44px; }
+    button:hover { filter: brightness(1.08); }
+    #error { color: var(--red); min-height: 1.2em; font-size: .85rem; }
+    .results { display: grid; gap: 15px; }
+    .metric-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
+    .metric { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 12px; min-width: 0; }
+    .metric h2 { font-size: .86rem; margin-bottom: 10px; }
+    .pair { display: flex; justify-content: space-between; gap: 8px; font-size: .82rem; font-variant-numeric: tabular-nums; padding-top: 5px; }
+    .pair b { font-weight: 550; color: var(--subtle); }
+    .pair span { font-weight: 700; text-align: right; }
+    .chart-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 13px 14px 9px; }
+    .chart-title { display: grid; gap: 2px; margin-bottom: 4px; }
+    .chart-title p { color: var(--subtle); font-size: .82rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--subtle); font-size: .82rem; margin: 5px 0 0 4px; }
+    .legend span { display: inline-flex; align-items: center; gap: 7px; }
+    .swatch { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+    .swatch.on { background: var(--blue); }
+    .swatch.off { background: var(--orange); }
+    svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .explain { color: var(--subtle); font-size: .86rem; max-width: 900px; }
+    .explain strong { color: var(--ink); }
+    .footnote { border-top: 1px solid var(--line); margin-top: 23px; padding-top: 13px; color: var(--subtle); font-size: .8rem; }
+    .footnote a { color: var(--blue); }
+    @media (max-width: 960px) {
+      main { padding: 21px 16px 34px; }
+      .layout { gap: 25px; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .metric { padding: 11px 13px; }
+      .metric h2 { margin-bottom: 5px; }
+      .control-grid { gap: 13px; }
+    }
+    @media (max-width: 400px) {
+      .control-grid { grid-template-columns: 1fr; }
+      main { padding-left: 13px; padding-right: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="intro">
+      <div class="eyebrow">Trading Labs · laboratorio de hipótesis</div>
+      <h1>¿Qué puede romper una señal de cinco días?</h1>
+      <p>Cambia noticias, fundamentos, tendencia, liquidez y presión de venta. Compara el mismo mercado con y sin el bucle de ventas forzadas.</p>
+      <p class="disclaimer"><strong>Es un simulador educativo, no un pronóstico.</strong> Sus parámetros son inventados, no están ajustados a precios reales y no detecta manipulación. Sirve para hacer preguntas que después probaremos con datos.</p>
+    </header>
+
+    <div class="layout">
+      <section aria-labelledby="controls-title">
+        <div class="section-heading">
+          <h2 id="controls-title">Supuestos del escenario</h2>
+          <p class="muted" style="font-size:.83rem; margin-top:4px">Los cambios se aplican sólo al volver a simular.</p>
+        </div>
+        <div class="controls">
+          <div class="control-grid">
+            <div class="control">
+              <div class="control-top"><label for="fundamental">Cambio fundamental</label><output id="fundamental-value" for="fundamental">0.0%</output></div>
+              <input id="fundamental" type="range" min="-4" max="4" step="0.5" value="0" aria-describedby="fundamental-hint">
+              <span class="hint" id="fundamental-hint">Cambio esperado de valor en 5 sesiones.</span>
+            </div>
+            <div class="control">
+              <div class="control-top"><label for="news">Sorpresa de noticias</label><output id="news-value" for="news">0.0%</output></div>
+              <input id="news" type="range" min="-8" max="8" step="0.5" value="0" aria-describedby="news-hint">
+              <span class="hint" id="news-hint">Impacto hipotético de una noticia nueva.</span>
+            </div>
+            <div class="control">
+              <div class="control-top"><label for="momentum">Tendencia técnica previa</label><output id="momentum-value" for="momentum">0.0%</output></div>
+              <input id="momentum" type="range" min="-5" max="5" step="0.5" value="0" aria-describedby="momentum-hint">
+              <span class="hint" id="momentum-hint">Movimiento observado en las 5 sesiones anteriores.</span>
+            </div>
+            <div class="control">
+              <div class="control-top"><label for="flow">Flujo anómalo no explicado</label><output id="flow-value" for="flow">0.0%</output></div>
+              <input id="flow" type="range" min="-6" max="6" step="0.5" value="0" aria-describedby="flow-hint">
+              <span class="hint" id="flow-hint">Shock puntual de órdenes; no identifica su causa.</span>
+            </div>
+            <div class="control">
+              <label for="regime">Régimen hipotético</label>
+              <select id="regime">
+                <option value="calm">Tranquilo</option>
+                <option value="mixed" selected>Mixto</option>
+                <option value="stressed">Tensionado</option>
+              </select>
+              <span class="hint">Cada régimen cambia volatilidad, profundidad y frecuencia de saltos.</span>
+            </div>
+            <div class="control">
+              <div class="control-top"><label for="volatility">Volatilidad diaria</label><output id="volatility-value" for="volatility">1.2%</output></div>
+              <input id="volatility" type="range" min="0.5" max="3" step="0.1" value="1.2">
+            </div>
+            <div class="control">
+              <div class="control-top"><label for="depth">Profundidad del mercado</label><output id="depth-value" for="depth">1.0×</output></div>
+              <input id="depth" type="range" min="0.5" max="2" step="0.1" value="1">
+              <span class="hint">Menor profundidad amplifica el impacto del flujo.</span>
+            </div>
+            <div class="control">
+              <div class="control-top"><label for="crowding">Estrategias siguiendo tendencia</label><output id="crowding-value" for="crowding">55%</output></div>
+              <input id="crowding" type="range" min="0" max="100" step="5" value="55">
+            </div>
+            <div class="control">
+              <div class="control-top"><label for="leverage">Apalancamiento y ventas forzadas</label><output id="leverage-value" for="leverage">65%</output></div>
+              <input id="leverage" type="range" min="0" max="100" step="5" value="65">
+            </div>
+            <div class="control">
+              <label for="seed">Semilla reproducible</label>
+              <input id="seed" type="number" min="1" max="4294967295" step="1" value="20261118" inputmode="numeric">
+              <span class="hint">Mismos valores y semilla producen las mismas rutas.</span>
+            </div>
+          </div>
+          <div class="run-row">
+            <button id="run" type="button">Simular 5,000 escenarios</button>
+            <span class="muted" id="run-meta" aria-live="polite"></span>
+          </div>
+          <div id="error" role="alert"></div>
+        </div>
+      </section>
+
+      <section class="results" id="results" aria-live="polite" aria-busy="false">
+        <div class="metric-grid">
+          <article class="metric">
+            <h2>Probabilidad de terminar arriba</h2>
+            <div class="pair"><b>Con bucle</b><span id="up-on">—</span></div>
+            <div class="pair"><b>Sin bucle</b><span id="up-off">—</span></div>
+          </article>
+          <article class="metric">
+            <h2>Rendimiento mediano a 5 sesiones</h2>
+            <div class="pair"><b>Con bucle</b><span id="median-on">—</span></div>
+            <div class="pair"><b>Sin bucle</b><span id="median-off">—</span></div>
+          </article>
+          <article class="metric">
+            <h2>Probabilidad de caer 5% o más</h2>
+            <div class="pair"><b>Con bucle</b><span id="loss-on">—</span></div>
+            <div class="pair"><b>Sin bucle</b><span id="loss-off">—</span></div>
+          </article>
+        </div>
+        <div class="chart-wrap">
+          <div class="chart-title">
+            <h2>Distribución de resultados simulados</h2>
+            <p>Rendimiento acumulado tras 5 sesiones · cada barra agrupa rutas</p>
+          </div>
+          <svg id="histogram" viewBox="0 0 820 350" role="img" aria-label="Distribución simulada del rendimiento a cinco sesiones"></svg>
+          <div class="legend" aria-label="Escenarios comparados">
+            <span><i class="swatch on" aria-hidden="true"></i>Bucle de ventas activo</span>
+            <span><i class="swatch off" aria-hidden="true"></i>Sin ventas forzadas</span>
+          </div>
+        </div>
+        <p class="explain"><strong>Cómo leerlo:</strong> usamos los mismos choques aleatorios en ambos casos; la comparación aísla el supuesto de que una caída active ventas forzadas y reduzca liquidez. Un resultado distinto muestra sensibilidad al supuesto, no prueba que ese mecanismo esté ocurriendo hoy.</p>
+      </section>
+    </div>
+
+    <footer class="footnote">
+      Mecanismos inspirados en literatura sobre impacto de órdenes y profundidad de mercado; coeficientes ilustrativos. La presión anómala puede representar muchas cosas y no constituye evidencia de manipulación. <a href="../docs/market-mechanics.md">Ver hipótesis, límites y fuentes</a>.
+    </footer>
+  </main>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
