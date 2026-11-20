@@ -1,6 +1,6 @@
 # Diagnóstico técnico, BABA y flujos hacia China
 
-**Fecha de corte:** cierre de EE. UU. del 19 de noviembre de 2026. Para BABA, los indicadores se calculan con el cierre comparable del 18 de noviembre, antes de que el mercado procesara por completo los resultados del día 19; durante la investigación aparecieron discrepancias entre proveedores para el cierre del día 19.
+**Fecha de corte:** cierre de EE. UU. del 19 de noviembre de 2026, incluidos los resultados de BABA publicados antes de abrir el mercado estadounidense. BABA cerró la sesión regular en US$83.31; las cotizaciones posteriores al cierre consultadas variaban entre US$83.06 y US$83.31.
 
 **Horizonte táctico:** cinco sesiones hábiles. La lectura de negocio para BABA es distinta y más larga.
 **Uso:** estudio para el predictor, no una señal automática de compra o venta.
@@ -8,8 +8,8 @@
 ## Lectura ejecutiva
 
 - La venta de EE. UU. se intensificó, pero el S&P 500 no perdió 4% al cierre del 19 de noviembre: cayó 2.0%. Desde el máximo intradía de 7,415.64 hasta el mínimo de 7,173.63 recorrió aproximadamente 3.3 puntos porcentuales; acumuló -5.1% en la semana y quedó -8.2% debajo de su máximo de cierre de octubre. El Nasdaq ya estaba en corrección técnica, alrededor de 13.5% debajo de su récord. [AP](https://apnews.com/article/2f178054aea79d282e5ccf8d62f26a28) [WSO, datos citados de Robinhood y Cboe](https://wallstreetobserver.com/articles/sp-500-losing-streak-six-days)
-- Si el -4% observado era BABA, sí coincide con sus sesiones del 16 y 17 de noviembre: -3.98% y -4.38%, respectivamente. Desde el cierre del 11 de noviembre hasta el del 18, BABA perdió aproximadamente 16.9%. La reacción de un solo día no basta para decidir si la tesis de dos años está intacta.
-- Técnicamente, ambos activos muestran deterioro, pero BABA estaba mucho más extendida a la baja que el S&P antes del reporte: RSI de 14 sesiones de ~24.5 y precio por debajo de sus medias de 20, 50 y 200 sesiones. Eso permite un rebote brusco; no confirma un piso.
+- Si el -4% observado era BABA, sí coincide con sus sesiones del 16 y 17 de noviembre: -3.98% y -4.38%, respectivamente. Desde el cierre del 11 de noviembre hasta el del 19, BABA perdió aproximadamente 17.9%. La reacción de un solo día no basta para decidir si la tesis de dos años está intacta.
+- Técnicamente, BABA está mucho más extendida a la baja que el S&P: al cierre del 19 nov. tenía RSI14 de ~23.7 y precio por debajo de sus medias de 20, 50, 100 y 200 sesiones. Eso permite un rebote brusco; no confirma un piso.
 - La expectativa táctica es volatilidad alta y riesgo de volver a probar mínimos mientras el S&P no recupere 7,324–7,348 y después 7,416. La banda semanal derivada del VIX es aproximadamente 6,887–7,464, en ambas direcciones; no es un objetivo bajista ni una garantía estadística.
 - Hay entradas de dinero medibles en fondos de China durante Q3, pero no evidencia suficiente para afirmar que los grandes fondos de EE. UU. estén trasladando ahora su capital a China. Los flujos de ETF de China y las compras de inversionistas locales o respaldados por el Estado no son equivalentes a un cambio de asignación de “whales” extranjeros.
 - Sí existe financiamiento circular en partes del ecosistema de IA y sí hay rivalidad estatal EE. UU.–China. Eso hace más frágil la justificación de algunas valuaciones y crea riesgo regulatorio; no demuestra fraude, manipulación del índice ni que toda la IA sea una burbuja.
@@ -43,18 +43,18 @@ Con VIX en 28.99, la regla de cálculo de una semana de Cboe da 28.99/√52 ≈ 
 
 ## BABA: la caída y la tesis de negocio son preguntas distintas
 
-Al cierre del 18 de noviembre, previo a resultados, BABA estaba en US$84.37 frente a US$101.52 el 11 de noviembre, una baja de 16.9%. Las caídas diarias fueron -3.98% el 16, -4.38% el 17 y -2.63% el 18. Los indicadores calculados con esa misma fecha de corte:
+Al cierre del 19 de noviembre, BABA estaba en US$83.31, -1.26% en la sesión, después de oscilar entre US$83.25 y US$88.15. El mínimo regular de US$83.25 igualó el mínimo de 52 semanas publicado por Yahoo Finance. Desde el cierre del 11 de noviembre en US$101.52, la acción perdió 17.9%. Las caídas diarias anteriores fueron -3.98% el 16, -4.38% el 17 y -2.63% el 18. El volumen del 19 nov. fue aproximadamente el doble del promedio indicado por Yahoo Finance. Indicadores calculados con la serie de cierres hasta el 19 nov.:
 
-| Medida | BABA al 18 nov. | Lectura |
+| Medida | BABA al 19 nov. | Lectura |
 |---|---:|---|
-| SMA20 | US$99.26 | Cierre 15.0% abajo. |
-| SMA50 | US$105.40 | Cierre 19.9% abajo. |
-| SMA100 | US$111.10 | Cierre 24.1% abajo. |
-| SMA200 | US$121.59 | Cierre 30.6% abajo. |
-| RSI14 | 24.5 | Sobreventa técnica más marcada que en el S&P; no prueba que la venta terminó. |
-| Volatilidad realizada 20d anualizada | ~45.7% | Equivale a un rango histórico aproximado de ±6.4% para cinco sesiones, antes de incorporar resultados y noticias nuevas. |
+| SMA20 | US$98.33 | Cierre 15.3% abajo. |
+| SMA50 | US$104.89 | Cierre 20.6% abajo. |
+| SMA100 | US$110.97 | Cierre 24.9% abajo. |
+| SMA200 | US$121.21 | Cierre 31.3% abajo. |
+| RSI14 | 23.7 | Sobreventa técnica más marcada que en el S&P; no prueba que la venta terminó. |
+| Volatilidad realizada 20d anualizada | ~45.7% | Equivale a un rango histórico aproximado de ±6.4% para cinco sesiones; no es una banda de opciones ni garantiza una probabilidad concreta. |
 
-El rango histórico de cinco sesiones de ~$78.94–$89.80 se construyó con volatilidad realizada hasta el 18 de noviembre. Quedó desactualizado al publicarse resultados el día 19 y no debe presentarse como rango de opciones actual. En la sesión del 19 se observaron precios entre aproximadamente US$83.25 y US$88.15, pero los feeds consultados no coincidieron en el cierre final; por eso no fijamos un precio de cierre intradía no verificado como base de la proyección.
+El rango histórico de cinco sesiones de ~$77.94–$88.68 usa volatilidad realizada hasta el cierre del 19 de noviembre; es una referencia retrospectiva, no un rango de opciones actual ni un pronóstico direccional. Los precios posteriores al cierre variaban ligeramente entre proveedores, por lo que la tabla usa el cierre regular de Yahoo Finance.
 
 ### Qué dicen los resultados más recientes
 
@@ -104,6 +104,6 @@ Sobre manipulación, la sesión muestra venta amplia y una reversión intradía 
 
 ## Fuentes de precio y cálculo
 
-- [S&P 500 histórico](https://finance.yahoo.com/quote/%5EGSPC/history/) y [BABA histórico](https://finance.yahoo.com/quote/BABA/history/): series diarias para las medias simples, RSI Wilder y volatilidad realizada calculadas en este análisis. La fecha de corte de BABA para medias/RSI es 18 nov.; los precios del 19 nov. diferían entre feeds consultados.
+- [S&P 500 histórico](https://finance.yahoo.com/quote/%5EGSPC/history/) y [BABA histórico](https://finance.yahoo.com/quote/BABA/history/): series diarias para las medias simples, RSI Wilder y volatilidad realizada calculadas en este análisis. BABA se mide hasta el cierre regular del 19 nov.; las cotizaciones posteriores al cierre varían ligeramente por proveedor y hora.
 - [AP: índices al cierre del 19 nov.](https://apnews.com/article/2f178054aea79d282e5ccf8d62f26a28): cierre, caída semanal, drawdown del máximo y amplitud.
 - [WSO: máximo/mínimo intradía, VIX y AMD](https://wallstreetobserver.com/articles/sp-500-losing-streak-six-days): niveles de la sesión y cifras de mercado atribuidas a Robinhood/Cboe.
